@@ -1,28 +1,32 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.LowLevel;
 
+[Serializable]
+public class Whee
+{
+    public GameObject WheelModel;
+    public WheelCollider WheelCollider;
+}
 public class PlayerCtrl : MonoBehaviour
 {
-    public float speed = 100;
+    Rigidbody rb;
 
     float h = 0f;
     float v = 0f;
-
-    GameObject Collider;
-    Rigidbody rb;
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
-    private void FixedUpdate()
+    void FixedUpdate()
     {
-        h = Input.GetAxisRaw("Horizontal");
-        v = Input.GetAxisRaw("Vertical");
+        h = Input.GetAxis("Horizontal");
+        v = Input.GetAxis("Vertical");
 
         Vector3 moveDir = new Vector3(h, 0f, v);
-        rb.AddForce(moveDir.normalized * speed);
+        rb.AddForce(moveDir);
     }
 
     void Update()
