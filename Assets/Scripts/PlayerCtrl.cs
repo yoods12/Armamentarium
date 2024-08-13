@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class CarController : MonoBehaviour
+public class PlayerCtrl : MonoBehaviour
 {    // Settings
     [SerializeField] private float motorForce, breakForce, maxSteerAngle;
 
@@ -19,7 +19,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private Transform bodyGear, coreGear;
     [SerializeField] private Transform rightWeaponGear, leftWeaponGear;
 
-    private float horizontalInput, verticalInput, mouseInput;
+    private float horizontalInput, verticalInput, mouseXInput, mouseYInput;
     private float currentSteerAngle, currentbreakForce;
     private bool isBreaking;
     Rigidbody rb;
@@ -31,7 +31,6 @@ public class CarController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = Vector3.zero;
-
     }
 
     private void FixedUpdate()
@@ -56,7 +55,9 @@ public class CarController : MonoBehaviour
         isBreaking = Input.GetKey(KeyCode.Space);
 
         // 마우스 좌우 회전
-        mouseInput = Input.GetAxis("Mouse X");
+        mouseXInput = Input.GetAxis("Mouse X");
+        // 마우스 상하 회전
+        mouseYInput = Input.GetAxis("Mouse Y");
     }
 
     private void HandleMotor()
@@ -109,7 +110,7 @@ public class CarController : MonoBehaviour
     }
     private void MouseRotate()
     {
-        bodyGear.Rotate(Vector3.up * rotSpeed * mouseInput * Time.deltaTime);
-
+        bodyGear.Rotate(Vector3.up * rotSpeed * mouseXInput * Time.deltaTime);
+        bodyGear.Rotate(Vector3.left * rotSpeed * mouseYInput * Time.deltaTime);
     }
 }
