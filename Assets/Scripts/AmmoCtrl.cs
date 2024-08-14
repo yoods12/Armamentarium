@@ -13,11 +13,14 @@ public class AmmoCtrl : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * speed);
+        Destroy(gameObject, 3f);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter(Collision collision)
     {
-        
+        if(collision.collider)
+        {
+            Destroy(gameObject);
+        }
     }
 }
