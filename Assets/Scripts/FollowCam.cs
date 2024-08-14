@@ -11,9 +11,6 @@ public class FollowCam : MonoBehaviour
     public float height = 4f;
     public float targetOffset = 2f;
 
-    float maxVAngle = 30f;
-    float maxHAngle = 90f;
-
     Transform tr;
 
     void Start()

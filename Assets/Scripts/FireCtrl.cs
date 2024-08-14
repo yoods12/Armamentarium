@@ -9,6 +9,7 @@ public class FireCtrl : MonoBehaviour
 
     public Transform rightFirePos;
     public Transform leftFirePos;
+
     // Start is called before the first frame update
     void Start()
     {
