@@ -11,6 +11,9 @@ public class FollowCam : MonoBehaviour
     public float height = 4f;
     public float targetOffset = 2f;
 
+    float maxVAngle = 30f;
+    float maxHAngle = 90f;
+
     Transform tr;
 
     void Start()
@@ -18,6 +21,11 @@ public class FollowCam : MonoBehaviour
         tr = GetComponent<Transform>();
     }
     void LateUpdate()
+    {
+        LookAt();
+    }
+
+    void LookAt()
     {
         var camPos = target.position - (target.forward * distance) + (target.up * height);
         tr.position = Vector3.Slerp(tr.position, camPos, moveDamping * Time.deltaTime);
