@@ -25,10 +25,11 @@ public class PlayerCtrl : MonoBehaviour
     Rigidbody rb;
     Transform playerTransform;
     private float rotSpeed = 200f;
+    private float currentRot;
 
     // 회전 제한 변수
-    private float maxBodyGearRotationX = 60f; // 최대 상하 회전 각도
-    private float maxBodyGearRotationY = 90f; // 최대 좌우 회전 각도
+    //private float maxBodyGearRotationX = 60f; // 최대 상하 회전 각도
+    //private float maxBodyGearRotationY = 90f; // 최대 좌우 회전 각도
     private Vector3 currentBodyGearRotation;
 
 
@@ -116,21 +117,28 @@ public class PlayerCtrl : MonoBehaviour
     }
     private void MouseRotate()
     {
+
+        //mouseXInput = Math.Clamp(mouseXInput, -maxBodyGearRotationX, maxBodyGearRotationX);
+        //mouseYInput = Math.Clamp(mouseYInput, -maxBodyGearRotationY, maxBodyGearRotationY);
+
+        //bodyGear.Rotate(Vector3.down, -mouseXInput, Space.Self);
+        //bodyGear.Rotate(Vector3.right, -mouseYInput, Space.Self);
+
         // 마우스 입력에 따른 회전 값 계산
-        float newRotationX = currentBodyGearRotation.x - (rotSpeed * mouseYInput * Time.deltaTime);
-        float newRotationY = currentBodyGearRotation.y + (rotSpeed * mouseXInput * Time.deltaTime);
+        //float newRotationX = currentBodyGearRotation.x - (rotSpeed * mouseYInput * Time.deltaTime);
+        //float newRotationY = currentBodyGearRotation.y + (rotSpeed * mouseXInput * Time.deltaTime);
 
         // 회전 각도 제한
-        newRotationX = Mathf.Clamp(newRotationX, -maxBodyGearRotationX, maxBodyGearRotationX);
-        newRotationY = Mathf.Clamp(newRotationY, -maxBodyGearRotationY, maxBodyGearRotationY);
+        //newRotationX = Mathf.Clamp(newRotationX, -maxBodyGearRotationX, maxBodyGearRotationX);
+        //newRotationY = Mathf.Clamp(newRotationY, -maxBodyGearRotationY, maxBodyGearRotationY);
 
-        currentBodyGearRotation = new Vector3(newRotationX, newRotationY, 0); // Z축 회전은 필요에 따라 조정
+        //currentBodyGearRotation = new Vector3(newRotationX, newRotationY, 0); // Z축 회전은 필요에 따라 조정
 
         // 회전 적용
-        bodyGear.localRotation = Quaternion.Euler(currentBodyGearRotation);
+        //bodyGear.localRotation = Quaternion.Euler(currentBodyGearRotation);
 
-
-        //bodyGear.Rotate(Vector3.up * rotSpeed * mouseXInput);
+        bodyGear.rotation = new Quaternion(Math.Clamp(bodyGear.transform.rotation.x * mouseXInput * Time.deltaTime * rotSpeed, -30f, 50f),
+            0f,Math.Clamp(bodyGear.transform.rotation.z * mouseXInput * Time.deltaTime * rotSpeed, -60f, 60f), 0f);
         //bodyGear.Rotate(Vector3.left * rotSpeed * mouseYInput);
     }
 }
