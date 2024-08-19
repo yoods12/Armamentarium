@@ -838,10 +838,10 @@ MonoBehaviour:
   motorForce: 1000
   breakForce: 3000
   maxSteerAngle: 30
-  frontLeftWheelCollider: {fileID: 1767366751}
-  frontRightWheelCollider: {fileID: 478689419}
-  rearLeftWheelCollider: {fileID: 1363155469}
-  rearRightWheelCollider: {fileID: 610666635}
+  FLWheelCol: {fileID: 1767366751}
+  FRWheelCol: {fileID: 478689419}
+  BLWheelCol: {fileID: 1363155469}
+  BRWheelCol: {fileID: 610666635}
   frontLeftWheelTransform: {fileID: 958819181}
   frontRightWheelTransform: {fileID: 741946359}
   rearLeftWheelTransform: {fileID: 517483281}
@@ -1115,6 +1115,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1517367100}
     m_Modifications:
+    - target: {fileID: 827004776746502827, guid: bea9817258b1ad6419c44df33ea31ffd, type: 3}
+      propertyPath: m_Name
+      value: BackLeftCollider
+      objectReference: {fileID: 0}
     - target: {fileID: 2541087643354189685, guid: bea9817258b1ad6419c44df33ea31ffd, type: 3}
       propertyPath: m_Mass
       value: 200
@@ -1170,6 +1174,10 @@ PrefabInstance:
     - target: {fileID: 8232476709134854822, guid: bea9817258b1ad6419c44df33ea31ffd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489975325137963596, guid: bea9817258b1ad6419c44df33ea31ffd, type: 3}
+      propertyPath: m_Name
+      value: BackRightCollider
       objectReference: {fileID: 0}
     - target: {fileID: 8588953829334615225, guid: bea9817258b1ad6419c44df33ea31ffd, type: 3}
       propertyPath: m_Mass

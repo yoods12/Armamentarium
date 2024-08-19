@@ -9,8 +9,8 @@ public class PlayerCtrl : MonoBehaviour
     [SerializeField] private float motorForce, breakForce, maxSteerAngle;
 
     // Wheel Colliders
-    [SerializeField] private WheelCollider frontLeftWheelCollider, frontRightWheelCollider;
-    [SerializeField] private WheelCollider rearLeftWheelCollider, rearRightWheelCollider;
+    [SerializeField] private WheelCollider FLWheelCol, FRWheelCol;
+    [SerializeField] private WheelCollider BLWheelCol, BRWheelCol;
 
     // Wheels
     [SerializeField] private Transform frontLeftWheelTransform, frontRightWheelTransform;
@@ -19,7 +19,7 @@ public class PlayerCtrl : MonoBehaviour
     [SerializeField] private Transform bodyGear, coreGear;
     [SerializeField] private Transform rightWeaponGear, leftWeaponGear;
 
-    private float horizontalInput, verticalInput, mouseXInput, mouseYInput;
+    private float h, v, x, y;
     private float currentSteerAngle, currentbreakForce;
     private bool isBreaking;
     Rigidbody rb;
@@ -30,14 +30,14 @@ public class PlayerCtrl : MonoBehaviour
     // 회전 제한 변수
     //private float maxBodyGearRotationX = 60f; // 최대 상하 회전 각도
     //private float maxBodyGearRotationY = 90f; // 최대 좌우 회전 각도
-    private Vector3 currentBodyGearRotation;
+    //private Vector3 currentBodyGearRotation;
 
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = Vector3.zero;
-        currentBodyGearRotation = bodyGear.localEulerAngles; // 초기 회전 값 저장
+        //currentBodyGearRotation = bodyGear.localEulerAngles; // 초기 회전 값 저장
     }
 
     private void FixedUpdate()
@@ -46,56 +46,54 @@ public class PlayerCtrl : MonoBehaviour
         HandleMotor();
         HandleSteering();
         UpdateWheels();
-        MouseRotate();
         UpdateGearLocation();
     }
-
+    void Update()
+    {
+        MouseRotate();
+    }
     private void GetInput()
     {
         // Steering Input
-        horizontalInput = Input.GetAxisRaw("Horizontal");
+        h = Input.GetAxisRaw("Horizontal");
 
         // Acceleration Input
-        verticalInput = Input.GetAxisRaw("Vertical");
+        v = Input.GetAxisRaw("Vertical");
 
         // Breaking Input
         isBreaking = Input.GetKey(KeyCode.Space);
 
-        // 마우스 좌우 회전
-        mouseXInput = Input.GetAxis("Mouse X");
-        // 마우스 상하 회전
-        mouseYInput = Input.GetAxis("Mouse Y");
     }
 
     private void HandleMotor()
     {
-        frontLeftWheelCollider.motorTorque = verticalInput * motorForce;
-        frontRightWheelCollider.motorTorque = verticalInput * motorForce;
+        FLWheelCol.motorTorque = v * motorForce;
+        FRWheelCol.motorTorque = v * motorForce;
         currentbreakForce = isBreaking ? breakForce : 0f;
         ApplyBreaking();
     }
 
     private void ApplyBreaking()
     {
-        frontRightWheelCollider.brakeTorque = currentbreakForce;
-        frontLeftWheelCollider.brakeTorque = currentbreakForce;
-        rearLeftWheelCollider.brakeTorque = currentbreakForce;
-        rearRightWheelCollider.brakeTorque = currentbreakForce;
+        FRWheelCol.brakeTorque = currentbreakForce;
+        FLWheelCol.brakeTorque = currentbreakForce;
+        BLWheelCol.brakeTorque = currentbreakForce;
+        BRWheelCol.brakeTorque = currentbreakForce;
     }
 
     private void HandleSteering()
     {
-        currentSteerAngle = maxSteerAngle * horizontalInput;
-        frontLeftWheelCollider.steerAngle = currentSteerAngle;
-        frontRightWheelCollider.steerAngle = currentSteerAngle;
+        currentSteerAngle = maxSteerAngle * h;
+        FLWheelCol.steerAngle = currentSteerAngle;
+        FRWheelCol.steerAngle = currentSteerAngle;
     }
 
     private void UpdateWheels()
     {
-        UpdateSingleWheel(frontLeftWheelCollider, frontLeftWheelTransform);
-        UpdateSingleWheel(frontRightWheelCollider, frontRightWheelTransform);
-        UpdateSingleWheel(rearRightWheelCollider, rearRightWheelTransform);
-        UpdateSingleWheel(rearLeftWheelCollider, rearLeftWheelTransform);
+        UpdateSingleWheel(FLWheelCol, frontLeftWheelTransform);
+        UpdateSingleWheel(FRWheelCol, frontRightWheelTransform);
+        UpdateSingleWheel(BRWheelCol, rearRightWheelTransform);
+        UpdateSingleWheel(BLWheelCol, rearLeftWheelTransform);
     }
 
     private void UpdateSingleWheel(WheelCollider wheelCollider, Transform wheelTransform)
@@ -117,28 +115,23 @@ public class PlayerCtrl : MonoBehaviour
     }
     private void MouseRotate()
     {
+        Vector2 mouseDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
-        //mouseXInput = Math.Clamp(mouseXInput, -maxBodyGearRotationX, maxBodyGearRotationX);
-        //mouseYInput = Math.Clamp(mouseYInput, -maxBodyGearRotationY, maxBodyGearRotationY);
+        float y = bodyGear.localEulerAngles.y + mouseDelta.x * rotSpeed * Time.deltaTime;
+        float x = bodyGear.localEulerAngles.x - mouseDelta.y * rotSpeed * Time.deltaTime;
 
-        //bodyGear.Rotate(Vector3.down, -mouseXInput, Space.Self);
-        //bodyGear.Rotate(Vector3.right, -mouseYInput, Space.Self);
+        if (x > 180f)
+        {
+            x -= 360f; // 180도를 초과하면 음수로 변환
+        }
+        if (y > 180f)
+        {
+            y -= 360f; // 180도를 초과하면 음수로 변환
+        }
+        x = Mathf.Clamp(x, -30, 30);
+        y = Mathf.Clamp(y, -50, 50);
 
-        // 마우스 입력에 따른 회전 값 계산
-        //float newRotationX = currentBodyGearRotation.x - (rotSpeed * mouseYInput * Time.deltaTime);
-        //float newRotationY = currentBodyGearRotation.y + (rotSpeed * mouseXInput * Time.deltaTime);
+        bodyGear.localRotation = Quaternion.Euler(x, y, 0);
 
-        // 회전 각도 제한
-        //newRotationX = Mathf.Clamp(newRotationX, -maxBodyGearRotationX, maxBodyGearRotationX);
-        //newRotationY = Mathf.Clamp(newRotationY, -maxBodyGearRotationY, maxBodyGearRotationY);
-
-        //currentBodyGearRotation = new Vector3(newRotationX, newRotationY, 0); // Z축 회전은 필요에 따라 조정
-
-        // 회전 적용
-        //bodyGear.localRotation = Quaternion.Euler(currentBodyGearRotation);
-
-        bodyGear.rotation = new Quaternion(Math.Clamp(bodyGear.transform.rotation.x * mouseXInput * Time.deltaTime * rotSpeed, -30f, 50f),
-            0f,Math.Clamp(bodyGear.transform.rotation.z * mouseXInput * Time.deltaTime * rotSpeed, -60f, 60f), 0f);
-        //bodyGear.Rotate(Vector3.left * rotSpeed * mouseYInput);
     }
 }
