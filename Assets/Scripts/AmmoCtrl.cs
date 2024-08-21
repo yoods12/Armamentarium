@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AmmoCtrl : MonoBehaviour
 {
-    //float damage = 10f;
-    float speed = 1000f;
+    //int damage = 10;
+    float speed = 5000f;
 
     AudioSource audioSource;
     Rigidbody rb;
@@ -23,7 +23,8 @@ public class AmmoCtrl : MonoBehaviour
     {
         if(collision.collider)
         {
-            Destroy(gameObject, 0.25f);
+            Destroy(gameObject);
         }
     }
+
 }
