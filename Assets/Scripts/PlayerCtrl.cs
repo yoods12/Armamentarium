@@ -27,17 +27,10 @@ public class PlayerCtrl : MonoBehaviour
     private float rotSpeed = 200f;
     private float currentRot;
 
-    // 회전 제한 변수
-    //private float maxBodyGearRotationX = 60f; // 최대 상하 회전 각도
-    //private float maxBodyGearRotationY = 90f; // 최대 좌우 회전 각도
-    //private Vector3 currentBodyGearRotation;
-
-
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = Vector3.zero;
-        //currentBodyGearRotation = bodyGear.localEulerAngles; // 초기 회전 값 저장
     }
 
     private void FixedUpdate()
@@ -109,7 +102,6 @@ public class PlayerCtrl : MonoBehaviour
     {
         bodyGear.localPosition = new Vector3(0, 1.58f, 0);
         
-        //coreGear.localPosition = new Vector3(0, 0, 0);
         rightWeaponGear.localPosition = new Vector3(0.41f, 0.41f, 0);
         leftWeaponGear.localPosition = new Vector3(-0.41f, 0.41f, 0);
     }

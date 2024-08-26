@@ -20,7 +20,7 @@ public class FireCtrl : MonoBehaviour
     AudioSource reloading;
 
     bool isReloading;
-    // Start is called before the first frame update
+    // Start is called before the first frame update    
     void Start()
     {
         reloading = GetComponent<AudioSource>();
