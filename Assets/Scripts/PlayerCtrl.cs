@@ -13,8 +13,8 @@ public class PlayerCtrl : MonoBehaviour
     [SerializeField] private WheelCollider BLWheelCol, BRWheelCol;
 
     // Wheels
-    [SerializeField] private Transform frontLeftWheelTransform, frontRightWheelTransform;
-    [SerializeField] private Transform rearLeftWheelTransform, rearRightWheelTransform;
+    [SerializeField] private Transform FLWheelTr, FRWheelTr;
+    [SerializeField] private Transform BLWheelTr, BRWheelTr;
 
     [SerializeField] private Transform bodyGear, coreGear;
     [SerializeField] private Transform rightWeaponGear, leftWeaponGear;
@@ -90,10 +90,10 @@ public class PlayerCtrl : MonoBehaviour
 
     private void UpdateWheels()
     {
-        UpdateSingleWheel(FLWheelCol, frontLeftWheelTransform);
-        UpdateSingleWheel(FRWheelCol, frontRightWheelTransform);
-        UpdateSingleWheel(BRWheelCol, rearRightWheelTransform);
-        UpdateSingleWheel(BLWheelCol, rearLeftWheelTransform);
+        UpdateSingleWheel(FLWheelCol, FLWheelTr);
+        UpdateSingleWheel(FRWheelCol, FRWheelTr);
+        UpdateSingleWheel(BRWheelCol, BRWheelTr);
+        UpdateSingleWheel(BLWheelCol, BLWheelTr);
     }
 
     private void UpdateSingleWheel(WheelCollider wheelCollider, Transform wheelTransform)

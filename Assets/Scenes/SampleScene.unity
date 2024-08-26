@@ -274,11 +274,6 @@ WheelCollider:
   m_CorrespondingSourceObject: {fileID: 2541087643354189685, guid: bea9817258b1ad6419c44df33ea31ffd, type: 3}
   m_PrefabInstance: {fileID: 8774944823716435391}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &517483281 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1692945711089218920, guid: bea9817258b1ad6419c44df33ea31ffd, type: 3}
-  m_PrefabInstance: {fileID: 8774944823716435391}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &522766834 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1724874857677222, guid: 6807a4fbab15c3444aa44ff82bcbe872, type: 3}
@@ -404,21 +399,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!4 &741946359 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7337340941973814388, guid: bea9817258b1ad6419c44df33ea31ffd, type: 3}
-  m_PrefabInstance: {fileID: 8774944823716435391}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &765455239 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7538933431901887051, guid: bea9817258b1ad6419c44df33ea31ffd, type: 3}
-  m_PrefabInstance: {fileID: 8774944823716435391}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &958819181 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6651941621179062852, guid: bea9817258b1ad6419c44df33ea31ffd, type: 3}
-  m_PrefabInstance: {fileID: 8774944823716435391}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,10 +864,10 @@ MonoBehaviour:
   FRWheelCol: {fileID: 478689419}
   BLWheelCol: {fileID: 1363155469}
   BRWheelCol: {fileID: 610666635}
-  frontLeftWheelTransform: {fileID: 958819181}
-  frontRightWheelTransform: {fileID: 741946359}
-  rearLeftWheelTransform: {fileID: 517483281}
-  rearRightWheelTransform: {fileID: 765455239}
+  FLWheelTr: {fileID: 0}
+  FRWheelTr: {fileID: 0}
+  BLWheelTr: {fileID: 0}
+  BRWheelTr: {fileID: 0}
   bodyGear: {fileID: 1657045142}
   coreGear: {fileID: 0}
   rightWeaponGear: {fileID: 1054283398}
