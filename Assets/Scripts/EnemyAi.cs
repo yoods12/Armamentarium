@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyAi : MonoBehaviour
 {
-    public NavMeshAgent agent;
+    public NavMeshAgent enemy;
 
     public Transform player;
 
@@ -24,12 +24,13 @@ public class EnemyAi : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    public GameObject projetile;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player").transform;
-        agent = GetComponent<NavMeshAgent>();
+        enemy = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
@@ -49,7 +50,7 @@ public class EnemyAi : MonoBehaviour
         if(!walkPointSet) SearchWalkPoint();
 
         if(walkPointSet)
-            agent.SetDestination(walkPoint);
+            enemy.SetDestination(walkPoint);
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
@@ -69,10 +70,22 @@ public class EnemyAi : MonoBehaviour
     }
     void ChasePlayer()
     {
-
+        enemy.SetDestination(player.position);
     }
     void AttackPlayer()
     {
+        Rigidbody rb = Instantiate(projetile, transform.position, )
 
+        enemy.SetDestination(transform.position);
+        transform.LookAt(player);
+        if(!alreadyAttacked)
+        {
+            alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), timeBotweenAttacks);
+        }
+    }
+    void ResetAttack()
+    {
+        alreadyAttacked = false;
     }
 }
