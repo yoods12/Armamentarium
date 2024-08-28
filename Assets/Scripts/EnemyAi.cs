@@ -5,26 +5,26 @@ using UnityEngine.AI;
 
 public class EnemyAi : MonoBehaviour
 {
-    public NavMeshAgent enemy;
+    public NavMeshAgent enemy; //적
 
-    public Transform player;
+    public Transform player; //플레이어
 
-    public LayerMask whatIsGround, whatIsPlayer;
+    public LayerMask whatIsGround, whatIsPlayer; // 땅, 플레이어 레이어 확인
 
     //Patroling
-    public Vector3 walkPoint;
-    bool walkPointSet;
-    public float walkPointRange;
+    public Vector3 walkPoint; // Ai 이동지점 설정
+    bool walkPointSet; // 이동지점이 설정되었는가
+    public float walkPointRange; // 이동지점 설정 범위
 
     //Attacking
-    public float timeBotweenAttacks;
-    bool alreadyAttacked;
+    public float timeBetweenAttacks; // 공격 시간
+    bool alreadyAttacked; // 이미 공격이 나가고 있는가
 
     //States
-    public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
+    public float sightRange, attackRange; // 탐지범위, 공격범위
+    bool playerInSightRange, playerInAttackRange; // 플레이어가 탐지범위에 들어왔는가, 플레이어가 공격범위에 들어왔는가
 
-    public GameObject projetile;
+    public GameObject enemyBullet; // 적 총알
 
     // Start is called before the first frame update
     void Start()
@@ -34,15 +34,15 @@ public class EnemyAi : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // 플레이어가 시야범위, 공격범위에 있는지
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInSightRange && playerInAttackRange) AttackPlayer();
+        if (!playerInSightRange && !playerInAttackRange) Patroling(); // 순찰
+        if (playerInSightRange && !playerInAttackRange) ChasePlayer(); // 추적
+        if (playerInSightRange && playerInAttackRange) AttackPlayer(); // 공격
     }
 
     void Patroling()
@@ -54,11 +54,11 @@ public class EnemyAi : MonoBehaviour
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
-        // walkPoint에 도달하면
+        // walkPoint에 도달하면 walkPoint를 false로 하고 다시 지정
         if(distanceToWalkPoint.magnitude < 5f)
             walkPointSet = false;
     }
-    void SearchWalkPoint()
+    void SearchWalkPoint() // walkPoint 지정
     {
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
@@ -72,16 +72,18 @@ public class EnemyAi : MonoBehaviour
     {
         enemy.SetDestination(player.position);
     }
-    void AttackPlayer()
+    void AttackPlayer() // 공격
     {
-        Rigidbody rb = Instantiate(projetile, transform.position, )
-
         enemy.SetDestination(transform.position);
         transform.LookAt(player);
         if(!alreadyAttacked)
         {
+            Rigidbody rb = Instantiate(enemyBullet, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+
+            rb.AddForce(transform.forward * 10f, ForceMode.Impulse);
+            rb.AddForce(transform.up * 10f, ForceMode.Impulse);
             alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBotweenAttacks);
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
     void ResetAttack()
