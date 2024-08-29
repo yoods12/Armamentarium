@@ -23,7 +23,7 @@ public class AmmoCtrl : MonoBehaviour
     {
         if(collision.collider)
         {
-            Destroy(gameObject);
+            Destroy(gameObject, 0.5f);
         }
     }
 

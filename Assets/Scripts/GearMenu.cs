@@ -14,6 +14,18 @@ public class GearMenu : MonoBehaviour
         trackGear = GameObject.Find("TrackGear");
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.V))
+        {
+            WheelChange();
+        }
+        if(Input.GetKeyDown(KeyCode.B))
+        {
+            TrackChange();
+        }
+    }
+
     public void WheelChange()
     {
         trackGear.SetActive(false);

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 33897395972808092}
   - component: {fileID: 23934304819795232}
   - component: {fileID: -562414642421216910}
+  - component: {fileID: 4019447509286392505}
+  - component: {fileID: -7530745114576546709}
   m_Layer: 0
   m_Name: Mine
   m_TagString: Untagged
@@ -112,6 +114,39 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &4019447509286392505
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041803199959140}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.545058, y: 2.7143958, z: 2.545058}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-7530745114576546709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041803199959140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c42c3794e69c4474baa120b843131be0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1163411048238188
 GameObject:
   m_ObjectHideFlags: 0
