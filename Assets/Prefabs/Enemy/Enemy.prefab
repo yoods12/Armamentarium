@@ -56,10 +56,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 30
+  walkPointRange: 100
   timeBetweenAttacks: 5
-  sightRange: 30
-  attackRange: 15
+  sightRange: 40
+  attackRange: 30
   enemyBullet: {fileID: 1041803199959140, guid: 5f7d5f60379571b4ab916f85aae80a71, type: 3}
 --- !u!195 &4760678436961042969
 NavMeshAgent:
@@ -80,7 +80,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!65 &5913481682952775482
@@ -102,8 +102,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.6177616, y: 4.1132317, z: 3.8985386}
-  m_Center: {x: -0.031277657, y: 4.126643, z: -3.1468477}
+  m_Size: {x: 4.6177616, y: 4.315304, z: 5.868742}
+  m_Center: {x: -0.031277657, y: 9.228964, z: -2.161746}
 --- !u!1001 &8652567737806188895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -122,7 +122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4704643116404514, guid: 6807a4fbab15c3444aa44ff82bcbe872, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4704643116404514, guid: 6807a4fbab15c3444aa44ff82bcbe872, type: 3}
       propertyPath: m_LocalPosition.z
