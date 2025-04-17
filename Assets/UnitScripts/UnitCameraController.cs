@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TPSCameraController : MonoBehaviour
+public class UnitCameraController : MonoBehaviour
 {
     // 카메라가 따라다닐 대상(플레이어 유닛)
     public Transform target;

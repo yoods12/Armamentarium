@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 1493582954}
-  prefab: {fileID: 4454030474965699197, guid: db9f0141258e92d41a8bf3e76f634a69, type: 3}
+  prefab: {fileID: 2598961863021298759, guid: b470a47d7cb1f184a98638fed817fcd4, type: 3}
   rotationSpeed: 90
   playerUnit: {fileID: 1537407174}
   buildingAim: {fileID: 1493582953}
@@ -679,12 +679,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2946760091329152726, guid: c40fae3343546ca4d9072f2992a5c907, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946760091329152726, guid: c40fae3343546ca4d9072f2992a5c907, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1431937179}
     - target: {fileID: 2946760091329152726, guid: c40fae3343546ca4d9072f2992a5c907, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: TrainingCenterButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 5205943933394517113, guid: c40fae3343546ca4d9072f2992a5c907, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5205943933394517113, guid: c40fae3343546ca4d9072f2992a5c907, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -717,6 +725,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8863414757456179168, guid: c40fae3343546ca4d9072f2992a5c907, type: 3}
   m_PrefabInstance: {fileID: 1493582952}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1498389520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 190781719042055576, guid: 9307306c98e8e5747860240c61a5371a, type: 3}
+  m_PrefabInstance: {fileID: 1652523943}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1537407173
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,13 +742,11 @@ GameObject:
   - component: {fileID: 1537407176}
   - component: {fileID: 1537407175}
   - component: {fileID: 1537407177}
-  - component: {fileID: 1537407178}
   - component: {fileID: 1537407180}
-  - component: {fileID: 1537407179}
   - component: {fileID: 1537407181}
   m_Layer: 0
   m_Name: PlayerUnit
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -798,54 +809,6 @@ MonoBehaviour:
   playerUnit: {fileID: 1537407173}
   horsePower: 5000
   turnSpeed: 50
---- !u!54 &1537407178
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1537407173}
-  serializedVersion: 4
-  m_Mass: 200
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &1537407179
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1537407173}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.9, y: 0.9, z: 0.9}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1537407180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -879,6 +842,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1537407174}
     m_Modifications:
+    - target: {fileID: -242357184999544080, guid: 9307306c98e8e5747860240c61a5371a, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -242357184999544080, guid: 9307306c98e8e5747860240c61a5371a, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 190781719042055576, guid: 9307306c98e8e5747860240c61a5371a, type: 3}
       propertyPath: m_Name
       value: CoreGear
@@ -926,13 +897,32 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 190781719042055576, guid: 9307306c98e8e5747860240c61a5371a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1652523947}
   m_SourcePrefab: {fileID: 100100000, guid: 9307306c98e8e5747860240c61a5371a, type: 3}
 --- !u!4 &1652523944 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2003140796346764628, guid: 9307306c98e8e5747860240c61a5371a, type: 3}
   m_PrefabInstance: {fileID: 1652523943}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1652523947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498389520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4176150ea037e9b4697b15fe0fdb3fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connectRadius: 0.6
+  blockLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

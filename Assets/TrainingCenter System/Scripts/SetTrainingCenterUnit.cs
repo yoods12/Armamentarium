@@ -24,7 +24,7 @@ public class SetTrainingCenterUnit : MonoBehaviour
         if(scene.name == "TrainingCenter")
         {
             SetPosition(); // 훈련장에서 위치 초기화
-            SetPhysics(); // 물리 초기화
+            //SetPhysics(); // 물리 초기화
         }
     }
     // 위치 초기화
@@ -38,12 +38,12 @@ public class SetTrainingCenterUnit : MonoBehaviour
     }
 
     // 물리 초기화
-    public void SetPhysics()
-    {
-        if (playerUnit != null)
-        {
-            rb.isKinematic = false;
-            rb.useGravity = true;
-        }
-    }
+    //public void SetPhysics()
+    //{
+       // if (playerUnit != null)
+        //{
+            //rb.isKinematic = false;
+            //rb.useGravity = true;
+        //}
+    //}
 }

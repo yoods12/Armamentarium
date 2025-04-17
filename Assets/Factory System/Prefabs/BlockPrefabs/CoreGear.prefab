@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2003140796346764628}
   - component: {fileID: 6739949046521778886}
-  m_Layer: 0
+  - component: {fileID: -242357184999544080}
+  - component: {fileID: 953041405767783992}
+  m_Layer: 10
   m_Name: CoreGear
   m_TagString: Block
   m_Icon: {fileID: 0}
@@ -26,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 190781719042055576}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0.5, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -55,6 +57,49 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &-242357184999544080
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190781719042055576}
+  serializedVersion: 4
+  m_Mass: 50
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &953041405767783992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190781719042055576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4176150ea037e9b4697b15fe0fdb3fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connectRadius: 0.6
+  blockLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1001 &1333408535193434736
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -118,6 +163,10 @@ PrefabInstance:
     - target: {fileID: 6551349953596237237, guid: 18fbd3221be30ab47b0412e2b4c1f246, type: 3}
       propertyPath: m_Name
       value: Ball
+      objectReference: {fileID: 0}
+    - target: {fileID: 6551349953596237237, guid: 18fbd3221be30ab47b0412e2b4c1f246, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -193,9 +242,17 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 52361805505633545, guid: 128e18ad7c534bb4fb9a5a9e7be964db, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 128e18ad7c534bb4fb9a5a9e7be964db, type: 3}
       propertyPath: m_Name
       value: CoreCube
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 128e18ad7c534bb4fb9a5a9e7be964db, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

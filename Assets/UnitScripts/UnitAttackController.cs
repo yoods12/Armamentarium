@@ -15,10 +15,6 @@ public class UnitAttackController : MonoBehaviour
         if (currentWeapon == null)
         {
             currentWeapon = GetComponentInChildren<Weapon>();
-            if (currentWeapon == null)
-            {
-                Debug.LogWarning("자식 오브젝트에서 Weapon 컴포넌트를 찾을 수 없습니다.");
-            }
         }
 
         // TrainingCenter 씬으로 전환될 때를 대비해 씬 로드 이벤트에 등록
