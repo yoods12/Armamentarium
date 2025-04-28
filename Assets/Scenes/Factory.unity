@@ -741,9 +741,9 @@ GameObject:
   - component: {fileID: 1537407174}
   - component: {fileID: 1537407176}
   - component: {fileID: 1537407175}
-  - component: {fileID: 1537407177}
   - component: {fileID: 1537407180}
   - component: {fileID: 1537407181}
+  - component: {fileID: 1537407182}
   m_Layer: 0
   m_Name: PlayerUnit
   m_TagString: Player
@@ -794,21 +794,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f1e77318326e54f8a8687c3febeea0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1537407177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1537407173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 975b6adb125677a4d872892ccaa440df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerUnit: {fileID: 1537407173}
-  horsePower: 5000
-  turnSpeed: 50
 --- !u!114 &1537407180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -834,6 +819,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentWeapon: {fileID: 0}
+  muzzleFlash: {fileID: 0}
+--- !u!114 &1537407182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537407173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85f86adf8c62cf04793e4de58357889d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 0}
+  weaponTransforms: []
+  maxAimDistance: 100
 --- !u!1001 &1652523943
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -843,16 +844,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 1537407174}
     m_Modifications:
     - target: {fileID: -242357184999544080, guid: 9307306c98e8e5747860240c61a5371a, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -242357184999544080, guid: 9307306c98e8e5747860240c61a5371a, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
+      propertyPath: m_Mass
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 190781719042055576, guid: 9307306c98e8e5747860240c61a5371a, type: 3}
       propertyPath: m_Name
       value: CoreGear
+      objectReference: {fileID: 0}
+    - target: {fileID: 190781719042055576, guid: 9307306c98e8e5747860240c61a5371a, type: 3}
+      propertyPath: m_TagString
+      value: Core Gear
       objectReference: {fileID: 0}
     - target: {fileID: 2003140796346764628, guid: 9307306c98e8e5747860240c61a5371a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -900,14 +901,32 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 190781719042055576, guid: 9307306c98e8e5747860240c61a5371a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1652523947}
+      addedObject: {fileID: 1652523951}
+    - targetCorrespondingSourceObject: {fileID: 190781719042055576, guid: 9307306c98e8e5747860240c61a5371a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1652523952}
   m_SourcePrefab: {fileID: 100100000, guid: 9307306c98e8e5747860240c61a5371a, type: 3}
 --- !u!4 &1652523944 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2003140796346764628, guid: 9307306c98e8e5747860240c61a5371a, type: 3}
   m_PrefabInstance: {fileID: 1652523943}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1652523947
+--- !u!114 &1652523951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498389520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 975b6adb125677a4d872892ccaa440df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitRigidbody: {fileID: 0}
+  horsePower: 150
+  turnSpeed: 25
+--- !u!114 &1652523952
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -922,7 +941,7 @@ MonoBehaviour:
   connectRadius: 0.6
   blockLayer:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

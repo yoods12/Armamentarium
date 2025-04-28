@@ -124,6 +124,14 @@ public class PlayerBuildingController : MonoBehaviour
                 preview.transform.rotation = currentPrefab.transform.rotation;
                 preview.SetActive(true);
             }
+            else if (hitInfo.collider.CompareTag("Core Gear") && !hitInfo.collider.CompareTag("Power Gear") &&
+                !hitInfo.collider.CompareTag("Weapon") && currentPrefab.CompareTag("Block")) // 코어기어에 블럭 설치
+            {
+                Vector3 spawnSpot = hitInfo.collider.transform.position + hitInfo.normal;
+                preview.transform.position = spawnSpot;
+                preview.transform.rotation = currentPrefab.transform.rotation;
+                preview.SetActive(true);
+            }
             else if (hitInfo.collider.CompareTag("Block") && currentPrefab.CompareTag("Weapon")) // 블럭에 무기 설치
             {
                 Vector3 spawnSpot = hitInfo.collider.transform.position + hitInfo.normal;
@@ -181,6 +189,13 @@ public class PlayerBuildingController : MonoBehaviour
         {
             if (hitInfo.collider.CompareTag("Block") && !hitInfo.collider.CompareTag("Power Gear") &&
                 !hitInfo.collider.CompareTag("Weapon") && currentPrefab.CompareTag("Block")) // 블럭에 블럭 설치
+            {
+                Vector3 spawnSpot = hitInfo.collider.transform.position + hitInfo.normal;
+                Quaternion spawnRot = currentPrefab.transform.rotation;
+                Instantiate(currentPrefab, spawnSpot, spawnRot, playerUnit);
+            }
+            if (hitInfo.collider.CompareTag("Core Gear") && !hitInfo.collider.CompareTag("Power Gear") &&
+                !hitInfo.collider.CompareTag("Weapon") && currentPrefab.CompareTag("Block")) // 코어기어에 블럭 설치
             {
                 Vector3 spawnSpot = hitInfo.collider.transform.position + hitInfo.normal;
                 Quaternion spawnRot = currentPrefab.transform.rotation;

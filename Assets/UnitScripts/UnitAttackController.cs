@@ -5,7 +5,7 @@ public class UnitAttackController : MonoBehaviour
 {
     // 현재 유닛에 장착된 무기. 인스펙터에서 할당하지 않으면 Awake()에서 자식 오브젝트 중 검색
     public Weapon currentWeapon;
-
+    public ParticleSystem muzzleFlash;
     // 마지막 발사 이후 경과 시간 추적 변수
     private float fireTimer = 0f;
 
@@ -63,12 +63,7 @@ public class UnitAttackController : MonoBehaviour
             GameObject projectile = Instantiate(currentWeapon.projectilePrefab,
                                                 currentWeapon.firePoint.position,
                                                 currentWeapon.firePoint.rotation);
-            // 생성된 발사체에 Rigidbody가 있다면 무기 설정에 따라 전진 속도 부여
-            Rigidbody rb = projectile.GetComponent<Rigidbody>();
-            if (rb != null)
-            {
-                rb.velocity = currentWeapon.firePoint.forward * currentWeapon.projectileSpeed;
-            }
+            //muzzleFlash.Play();
         }
     }
 
