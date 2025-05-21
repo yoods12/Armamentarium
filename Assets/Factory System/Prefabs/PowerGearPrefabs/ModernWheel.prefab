@@ -10,9 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3499244476403784403}
   - component: {fileID: 6836213657106098155}
-  - component: {fileID: 3600190036773991306}
-  - component: {fileID: -6218389836388665838}
-  - component: {fileID: 595552671658162939}
+  - component: {fileID: -6553582730483184620}
   m_Layer: 0
   m_Name: ModernWheel
   m_TagString: Power Gear
@@ -58,52 +56,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.9, z: 1.9}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3600190036773991306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2396082240226157770}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f587c8be2db67248811f3c7493311f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 500
-  turnSpeed: 30
-  steeringWheels: []
-  playerUnit: {fileID: 0}
-  maxSteerAngle: 30
-  steerSpeed: 5
---- !u!54 &-6218389836388665838
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2396082240226157770}
-  serializedVersion: 4
-  m_Mass: 100
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &595552671658162939
+--- !u!114 &-6553582730483184620
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,13 +65,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2396082240226157770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4176150ea037e9b4697b15fe0fdb3fea, type: 3}
+  m_Script: {fileID: 11500000, guid: 84ce942e34ce1ed4cab04eb841bc46e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connectRadius: 0.6
-  blockLayer:
-    serializedVersion: 2
-    m_Bits: 1024
+  mass: 50
 --- !u!1001 &220876041373035045
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 8724545172391162841}
   - component: {fileID: 4132278863628266431}
   - component: {fileID: -3855256292750337353}
-  - component: {fileID: 7424931629949009627}
-  - component: {fileID: -9210307850350301161}
+  - component: {fileID: -7759704862945099146}
   m_Layer: 0
   m_Name: RailGun
   m_TagString: Weapon
@@ -75,34 +74,7 @@ MonoBehaviour:
   firePoint: {fileID: 2444831779212026324}
   projectileSpeed: 20
   fireRate: 0.5
---- !u!54 &7424931629949009627
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 681283732901202326}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &-9210307850350301161
+--- !u!114 &-7759704862945099146
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,13 +83,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 681283732901202326}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4176150ea037e9b4697b15fe0fdb3fea, type: 3}
+  m_Script: {fileID: 11500000, guid: 84ce942e34ce1ed4cab04eb841bc46e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connectRadius: 0.6
-  blockLayer:
-    serializedVersion: 2
-    m_Bits: 1024
+  mass: 100
 --- !u!1 &6227306180139257558
 GameObject:
   m_ObjectHideFlags: 0

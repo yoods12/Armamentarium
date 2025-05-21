@@ -15,7 +15,7 @@ public class ItemObject : ScriptableObject
 
     public Sprite icon; //아이템 이미지
     public GameObject modelprefab; //캐릭터에 부착되어야하는 3d모델 프리팹
-
+    public ResearchNode researchNode; //아이템을 연구하기 위한 노드
     public Item data = new Item();
 
     [TextArea(15, 20)]

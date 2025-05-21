@@ -18,7 +18,7 @@ public class UnitAimManager : MonoBehaviour
     public float maxAimDistance = 100f;    // 레이 최대 사거리
 
     [Header("Angle Limits (local space)")]
-    AngleLimit yawLimit = new AngleLimit { min = -90f, max = 90f };  // 좌우
+    AngleLimit yawLimit = new AngleLimit { min = -179f, max = 179f };  // 좌우
     AngleLimit pitchLimit = new AngleLimit { min = 0f, max = 45f };  // 상하
 
     void Awake()

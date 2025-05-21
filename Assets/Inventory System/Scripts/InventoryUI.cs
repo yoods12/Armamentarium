@@ -1,4 +1,3 @@
-using Microsoft.Unity.VisualStudio.Editor;
 using System.Collections.Generic;
 using System.IO;
 using TMPro;
@@ -153,4 +152,30 @@ public abstract class InventoryUI : MonoBehaviour
         // 예시로, 선택된 슬롯의 정보를 로그로 출력하거나 UI 하이라이트 처리 가능
         Debug.Log("Selected slot with item: " + slotsUIs[slotUI].item.name);
     }
+    private bool IsUnlocked(InventorySlot slot)
+    {
+        return slot.ItemObject?.researchNode?.isUnlocked ?? true;
+    }
+    protected void SetupSlotUI(GameObject slotUI, InventorySlot slot)
+    {
+        // 1) CanvasGroup 추가 → α/인터랙션 제어
+        var cg = slotUI.GetComponent<CanvasGroup>() ?? slotUI.AddComponent<CanvasGroup>();
+        bool unlocked = slot.ItemObject?.researchNode?.isUnlocked ?? true;
+        cg.alpha = unlocked ? 1f : 0.3f;
+        cg.blocksRaycasts = unlocked;
+
+        // 2) 기본 이벤트 등록 (PointerEnter/Exit 항상, 나머지는 잠금 상태에 따라)
+        AddEvent(slotUI, EventTriggerType.PointerEnter, _ => OnEnterSlot(slotUI));
+        AddEvent(slotUI, EventTriggerType.PointerExit, _ => OnExitSlot(slotUI));
+
+        if (unlocked)
+        {
+            AddEvent(slotUI, EventTriggerType.BeginDrag, _ => OnStartDrag(slotUI));
+            AddEvent(slotUI, EventTriggerType.Drag, _ => OnDrag(slotUI));
+            AddEvent(slotUI, EventTriggerType.EndDrag, _ => OnEndDrag(slotUI));
+            AddEvent(slotUI, EventTriggerType.PointerClick, _ => OnSlotClicked(slotUI));
+        }
+    }
+
+
 }
