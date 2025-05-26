@@ -86,7 +86,7 @@ public class UnitAimManager : MonoBehaviour
             pitch = Mathf.Clamp(pitch, pitchLimit.min, pitchLimit.max);
 
             // 5) 클램프된 로컬 회전 재구성
-            Quaternion clampedLocal = Quaternion.Euler(pitch, yaw, 0f);
+            Quaternion clampedLocal = Quaternion.Euler(0f, yaw, 0f);
 
             // 6) 로컬 → 월드 회전 변환 후 적용
             weapon.rotation = weapon.parent.rotation * clampedLocal;
