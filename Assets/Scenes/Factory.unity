@@ -742,6 +742,7 @@ GameObject:
   - component: {fileID: 1537407184}
   - component: {fileID: 1537407183}
   - component: {fileID: 1537407185}
+  - component: {fileID: 1537407186}
   m_Layer: 0
   m_Name: PlayerUnit
   m_TagString: Player
@@ -811,7 +812,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1537407173}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46d6ec26c972a554eb36bcbcac34665b, type: 3}
   m_Name: 
@@ -825,7 +826,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1537407173}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85f86adf8c62cf04793e4de58357889d, type: 3}
   m_Name: 
@@ -886,6 +887,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   markerSize: 0.2
   markerColor: {r: 1, g: 0, b: 0, a: 1}
+  markerHeightOffset: 0.1
+--- !u!114 &1537407186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537407173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51a74cdae4835ea469e5dd3adc07a15c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  driveForce: 1000
+  turnTorque: 1000
+  turretPivot: {fileID: 0}
+  turretRotateSpeed: 5
 --- !u!1001 &1652523943
 PrefabInstance:
   m_ObjectHideFlags: 0
