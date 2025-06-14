@@ -79,19 +79,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8187120357938176332, guid: 4c5cb968e862a504bb20079e4fa71208, type: 3}
       propertyPath: m_Name
-      value: Modern_Wheel_All Variant
+      value: Modern_Wheel_Tire
       objectReference: {fileID: 0}
-    - target: {fileID: 8851172206914730998, guid: 4c5cb968e862a504bb20079e4fa71208, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8851172206914730998, guid: 4c5cb968e862a504bb20079e4fa71208, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8851172206914730998, guid: 4c5cb968e862a504bb20079e4fa71208, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.05488
+    - target: {fileID: 8187120357938176332, guid: 4c5cb968e862a504bb20079e4fa71208, type: 3}
+      propertyPath: m_TagString
+      value: Tire
       objectReference: {fileID: 0}
     - target: {fileID: 8851172206914730998, guid: 4c5cb968e862a504bb20079e4fa71208, type: 3}
       propertyPath: m_LocalPosition.x
@@ -132,10 +124,6 @@ PrefabInstance:
     - target: {fileID: 8851172206914730998, guid: 4c5cb968e862a504bb20079e4fa71208, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8851172206914730998, guid: 4c5cb968e862a504bb20079e4fa71208, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

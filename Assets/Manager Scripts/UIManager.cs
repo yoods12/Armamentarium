@@ -6,6 +6,8 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
     [SerializeField] private GameObject playerInventory; // 인벤토리 창(패널)
+    [SerializeField] private GameObject playerTechTree; // 기술 트리 창(패널)
+    [SerializeField] private GameObject ban; // 인벤토리 창(패널)
     [SerializeField] private GameObject aim; // 에임
 
     void Awake()
@@ -13,6 +15,9 @@ public class UIManager : MonoBehaviour
         Singleton();
         // 초기 상태: 인벤토리 창은 꺼져있고 에임은 켜진 상태로 설정
         playerInventory.SetActive(false);
+        playerTechTree.SetActive(false);
+        ban.SetActive(false);
+
         aim.SetActive(true);
         // 초기 상태에서 마우스 커서를 숨기고 잠급니다.
         Cursor.visible = false;
@@ -42,6 +47,7 @@ public class UIManager : MonoBehaviour
 
         // 인벤토리 창 상태를 반대로 전환 (비활성 -> 활성, 활성 -> 비활성)
         playerInventory.SetActive(!isActive);
+        ban.SetActive(!isActive);
         // aim은 인벤토리 창과 반대로 활성화
         aim.SetActive(isActive);
 
@@ -52,7 +58,22 @@ public class UIManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
+    public void TechTree()
+    {
+        bool isActive = playerTechTree.activeSelf; //true는 인벤토리가 꺼져있을때
 
+        // 인벤토리 창 상태를 반대로 전환 (비활성 -> 활성, 활성 -> 비활성)
+        playerTechTree.SetActive(!isActive);
+        // aim은 인벤토리 창과 반대로 활성화
+        aim.SetActive(isActive);
+
+        // 인벤토리 창이 꺼지면 마우스 보이게함
+        if (isActive)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
     public void TrainingCenterButton()
     {
         SceneManager.LoadScene("TrainingCenter");

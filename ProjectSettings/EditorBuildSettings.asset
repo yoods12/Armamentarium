@@ -10,5 +10,8 @@ EditorBuildSettings:
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/TrainingCenter.unity
+    guid: 9462970a5a2dfc847bc7f357189432e8
+  - enabled: 1
+    path: Assets/Scenes/TrainingCenter2.unity
     guid: 746ef36ebde87bb439b0363a1a82fec4
   m_configObjects: {}

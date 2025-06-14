@@ -2,15 +2,33 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 20f;
+    [Tooltip("ÀÌ ÃÑ¾ËÀÌ ÀÔÈú µ¥¹ÌÁö")]
+    public float damage = 20f;
+
+    [Header("Spawn Sound")]
+    [Tooltip("ÃÑ¾ËÀÌ »ı¼ºµÉ ¶§ Àç»ıÇÒ ¿Àµğ¿À Å¬¸³")]
+    public AudioClip spawnSFX;
+    [Tooltip("»ı¼º »ç¿îµå Àç»ı º¼·ı")]
+    [Range(0f, 1f)]
+    public float spawnVolume = 1f;
 
     void Start()
     {
-        Rigidbody rb = GetComponent<Rigidbody>();
-        if (rb != null)
+        // ÃÑ¾Ë »ı¼º ½ÃÁ¡¿¡ »ç¿îµå Àç»ı
+        if (spawnSFX != null)
+            AudioSource.PlayClipAtPoint(spawnSFX, transform.position, spawnVolume);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        // Ãæµ¹ÇÑ »ó´ë¿¡°Ô Health ÄÄÆ÷³ÍÆ®°¡ ÀÖÀ¸¸é
+        var hp = collision.collider.GetComponentInParent<Health>();
+        if (hp != null)
         {
-            // ë¡œì»¬ Z+ (transform.forward) ë°©í–¥ìœ¼ë¡œ ì†ë„ ì„¤ì •
-            rb.velocity = transform.forward * speed;
+            hp.TakeDamage(damage);
         }
+
+        // ÃÑ¾Ë »èÁ¦
+        Destroy(gameObject);
     }
 }

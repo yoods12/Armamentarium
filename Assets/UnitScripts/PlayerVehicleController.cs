@@ -1,4 +1,4 @@
-using System.Linq;
+ï»¿using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,10 +7,10 @@ public class PlayerVehicleController : MonoBehaviour
 {
     [Header("Drive Settings")]
     public float driveForce = 500f;
-    public float turnTorque = 200f;
+    public float turnSpeed = 30f;  // í† í¬ ëŒ€ì‹  íšŒì „ ì†ë„ë¡œ ë³€ê²½
 
     [Header("Turret Settings")]
-    [Tooltip("ÀÚµ¿À¸·Î ÀÚ½Ä Áß ÀÌ¸§ÀÌ 'FirePoint'ÀÎ ¿ÀºêÁ§Æ®¸¦ ÇÇº¿À¸·Î ÇÒ´ç")]
+    [Tooltip("ìë™ìœ¼ë¡œ ìì‹ ì¤‘ ì´ë¦„ì´ 'FirePoint'ì¸ ì˜¤ë¸Œì íŠ¸ë¥¼ í”¼ë´‡ìœ¼ë¡œ í• ë‹¹")]
     public Transform turretPivot;
     public float turretRotateSpeed = 5f;
 
@@ -21,19 +21,21 @@ public class PlayerVehicleController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        // turretPivot ÀÚµ¿ ÇÒ´ç: ÀÚ½Ä Áß ÀÌ¸§ÀÌ "FirePoint"ÀÎ Transform
+        // X, Z íšŒì „ì€ ê³ ì •í•˜ê³  Yì¶•ë§Œ í’€ì–´ë‘¡ë‹ˆë‹¤
+        rb.constraints = RigidbodyConstraints.FreezeRotationX
+                       | RigidbodyConstraints.FreezeRotationZ;
+
+        // turretPivot ìë™ í• ë‹¹
         if (turretPivot == null)
         {
             turretPivot = GetComponentsInChildren<Transform>()
                           .FirstOrDefault(t => t.name == "FirePoint");
             if (turretPivot == null)
-                Debug.LogWarning($"[{name}] ÀÚ½Ä¿¡ 'FirePoint'°¡ ¾ø¾î turretPivot ÇÒ´ç ½ÇÆĞ");
+                Debug.LogWarning($"[{name}] ìì‹ì— 'FirePoint'ê°€ ì—†ì–´ turretPivot í• ë‹¹ ì‹¤íŒ¨");
         }
 
-        // Ã³À½ ¾À ·Îµå ½Ã »óÅÂ ¼³Á¤
+        // ì´ˆê¸° ì”¬ ì œì–´ ìƒíƒœ
         SetControlState(SceneManager.GetActiveScene().name);
-
-        // ¾À ÀüÈ¯ Äİ¹é
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -58,18 +60,23 @@ public class PlayerVehicleController : MonoBehaviour
     {
         if (!canControl) return;
 
-        float v = Input.GetAxis("Vertical");
-        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");   // W/S
+        float h = Input.GetAxis("Horizontal"); // A/D
 
-        rb.AddRelativeForce(Vector3.forward * v * driveForce * Time.fixedDeltaTime);
-        rb.AddTorque(Vector3.up * h * turnTorque * Time.fixedDeltaTime);
+        // ì „ì§„Â·í›„ì§„: Rigidbodyë¡œ ë¬¼ë¦¬ í˜ ì ìš©
+        rb.AddRelativeForce(Vector3.forward * v * driveForce * Time.fixedDeltaTime,
+                            ForceMode.Acceleration);
+
+        // ì¢Œìš° íšŒì „: Transformì„ ì§ì ‘ íšŒì „
+        float yaw = h * turnSpeed * Time.fixedDeltaTime;
+        transform.Rotate(0f, yaw, 0f, Space.Self);
     }
 
     void Update()
     {
         if (!canControl || turretPivot == null) return;
 
-        float mouseX = Input.GetAxis("Mouse X");
-        turretPivot.Rotate(0f, mouseX * turretRotateSpeed, 0f, Space.Self);
+        float mx = Input.GetAxis("Mouse X");
+        turretPivot.Rotate(0f, mx * turretRotateSpeed, 0f, Space.Self);
     }
 }

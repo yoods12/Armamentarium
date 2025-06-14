@@ -8,6 +8,7 @@ TagManager:
   - Weapon
   - Power Gear
   - Core Gear
+  - Tire
   layers:
   - Default
   - TransparentFX

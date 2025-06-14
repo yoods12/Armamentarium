@@ -137,6 +137,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wood_Wheel
       objectReference: {fileID: 0}
+    - target: {fileID: 8620456100906185066, guid: 057d36656cc50f54582386df70a7511b, type: 3}
+      propertyPath: m_TagString
+      value: Tire
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
